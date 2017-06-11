@@ -1,0 +1,7 @@
+## roles/vim/vars/Ubuntu.yml
+# Ubuntu specific vars
+# vim:ft=ansible:
+---
+Editors:
+  vim: present
+...

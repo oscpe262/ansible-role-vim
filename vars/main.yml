@@ -1,0 +1,6 @@
+## roles/vim/vars/main.yml
+# General variables associated with this role.
+# vim:ft=ansible:
+---
+#server: alnilam
+...

@@ -1,0 +1,9 @@
+## roles/vim/vars/RedHat.yml
+# RHEL specific vars
+# vim:ft=ansible:
+---
+Editors:
+  vim: present
+  vim-syntastic: present
+  vim-powerline: present
+...

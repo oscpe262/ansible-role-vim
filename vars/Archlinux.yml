@@ -1,0 +1,19 @@
+## roles/vim/vars/Archlinux.yml
+# Arch Linux specific vars
+# vim:ft=ansible:
+---
+Editors:
+  vi: absent
+  vim: absent
+  gvim: present
+  vim-spell-en: present
+  vim-spell-sv: present
+  powerline: present
+  vim-latexsuite: present
+AURED:
+  powerline-vim: present
+  vim-markdown: present
+  vim-taglist: present
+  vim-plug: present
+  vim-youcompleteme-git: present
+...

@@ -1,0 +1,64 @@
+## roles/vim/tasks/main.yml
+## Role main file
+# vim:ft=ansible:
+---
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+    - default.yml
+  tags: vim,editor,vimrc
+
+- name: "Vim AUR"
+  become: yes
+  become_user: '{{ as_user }}'
+  yaourt:
+    name:  '{{ item.key }}'
+    state: '{{ item.value }}'
+  tags: vim,editor
+  with_dict: '{{ AURED }}'
+  when: "'Archlinux' in ansible_distribution"
+
+- name: "Install vim and deps "
+  package:
+    name:  '{{ item.key }}'
+    state: '{{ item.value }}'
+  tags: vim,editor
+  with_dict: '{{ Editors }}'
+
+- name: "Vim configuration (vimrc)"
+  template:
+    src: vimrc.j2
+    dest: '/etc/vimrc'
+    mode: 0644
+  tags: vim,editor,vimrc
+
+- name: "Check vim version by base dir (8.0)"
+  stat:
+    path: /usr/share/vim/vim80/colors
+  register: vim80
+
+- name: "Check vim version by base dir (7.4)"
+  stat:
+    path: /usr/share/vim/vim80/colors
+  register: vim74
+
+- name: "Vim configuration (color theme vim 7.4 base dir)"
+  template:
+    src: Tomorrow-Night.vim
+    dest: /usr/share/vim/vim74/colors/Tomorrow-Night.vim
+  when: vim74.stat.isdir is defined and vim74.stat.isdir  
+  tags: vim,editor,vimrc
+
+- name: "Vim configuration (color theme vim 8.0 base dir)"
+  template:
+    src: Tomorrow-Night.vim
+    dest: /usr/share/vim/vim80/colors/Tomorrow-Night.vim
+  when: vim80.stat.isdir is defined and vim80.stat.isdir  
+  tags: vim,editor,vimrc
+
+- name: Arch specifics
+  include: Archlinux.yml
+  when: "'Archlinux' in ansible_distribution"
+  tags: vim,editor
+...
