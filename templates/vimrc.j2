@@ -1,0 +1,124 @@
+{% if 'Archlinux' in ansible_distribution %}
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+
+" do not load defaults if ~/.vimrc is missing
+"let skip_defaults_vim=1
+{% endif %}
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+colo Tomorrow-Night
+syntax on
+
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set number
+
+" intelligent comments
+set comments=sl:/*,mb:\ *,elx:\ */
+
+
+" switch between header/source with F4 (switch .c to .cpp for c++)
+map <F4> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+" recreate tags file with F5
+map <F5> :!ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .<CR>
+" build using makeprg with <F7>
+map <F7> :make<CR>
+" build using makeprg with <S-F7>
+map <S-F7> :make clean all<CR>
+
+" goto definition with F12
+map <F12> <C-]>
+
+func! WordProcessorModeSE()
+  setlocal textwidth=80
+  setlocal smartindent
+  setlocal spell spelllang=sv
+  setlocal noexpandtab
+endfu
+
+com! WPS call WordProcessorModeSE
+
+func! WordProcessorModeEN()
+  setlocal textwidth=80
+  setlocal smartindent
+  setlocal spell spelllang=en_gb
+  setlocal noexpandtab
+endfu
+
+com! WPE call WordProcessorModeEN
+
+" Powerline
+let g:powerline_pycmd='py3'
+set t_Co=256 " User 256 colours (Use this setting only if your terminal supports 256 colours)
+call plug#begin('~/.vim/plugged')
+Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-surround'
+Plug 'townk/vim-autoclose'
+Plug 'chase/vim-ansible-yaml'
+Plug 'glench/vim-jinja2-syntax'
+Plug 'rip-rip/clang_complete'
+Plug 'justinmk/vim-syntax-extra'
+call plug#end()
+
+" NERDTree conf
+" autocmd vimenter * NERDTree " Open NERDTree automatically on vim startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <F2> :NERDTreeToggle<CR>
+
+" vim-ansible-yaml
+let g:ansible_options = {'ignore_blank_lines': 0}
+let g:ansible_options = {'documentation_mapping': '<C-K>'}
+
+ " path directly to clang library file
+ let g:clang_library_path='/usr/lib64/libclang.so'
+ let g:clang_auto_select='2'
+ let g:clang_complete_auto='1'
+ let g:clang_hl_errors='1'
+{% if 'Archlinux' in ansible_distribution %}
+ let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+ let g:ycm_server_python_interpreter = '/usr/bin/python2'
+{% endif %}

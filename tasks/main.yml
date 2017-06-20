@@ -37,11 +37,13 @@
   stat:
     path: /usr/share/vim/vim80/colors
   register: vim80
+  tags: vim,editor
 
 - name: "Check vim version by base dir (7.4)"
   stat:
-    path: /usr/share/vim/vim80/colors
+    path: /usr/share/vim/vim74/colors
   register: vim74
+  tags: vim,editor
 
 - name: "Vim configuration (color theme vim 7.4 base dir)"
   template:
