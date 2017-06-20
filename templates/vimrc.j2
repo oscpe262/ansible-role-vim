@@ -88,10 +88,9 @@ endfu
 com! WPE call WordProcessorModeEN
 
 " Powerline
-let g:powerline_pycmd='py3'
+let g:powerline_pycmd='{{ python_version }}'
 set t_Co=256 " User 256 colours (Use this setting only if your terminal supports 256 colours)
 call plug#begin('~/.vim/plugged')
-Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
@@ -100,6 +99,7 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'rip-rip/clang_complete'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
 call plug#end()
 
 " NERDTree conf

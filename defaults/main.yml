@@ -2,5 +2,7 @@
 # Default lower priority variables for the role
 # vim:ft=ansible:
 ---
+as_user: root
+python_version: "py3"
 ...
 

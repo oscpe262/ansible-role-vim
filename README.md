@@ -13,7 +13,8 @@ Following distributions are supported:
 ## Role Variables
 | Variable                       | Default                          | Comments (type)  |
 | :---                           | :---                             | :---             |
-| as_user | foo | User for non-root installs |
+| as_user | root | User for non-package installs |
+| python_version | py3 | Python version for powerline <py/py3> |
 
 ## Dependencies
 yaourt module (TODO: To be replaced with pacaur and included or linked)

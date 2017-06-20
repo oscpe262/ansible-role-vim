@@ -4,4 +4,6 @@
 ---
 Editors:
   vim-enhanced: present
+
+python_version: "py"
 ...

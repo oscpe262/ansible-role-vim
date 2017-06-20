@@ -6,4 +6,6 @@ Editors:
   vim: present
   vim-syntastic: present
   vim-powerline: present
+
+python_version: "py"
 ...
