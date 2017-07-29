@@ -4,8 +4,7 @@
 ---
 Editors:
   vi: absent
-  vim: absent
-  gvim: present
+  vim: present
   vim-spell-en: present
   vim-spell-sv: present
   powerline: present
@@ -15,5 +14,5 @@ AURED:
   vim-markdown: present
   vim-taglist: present
   vim-plug: present
-  vim-youcompleteme-git: present
+  #  vim-youcompleteme-git: present
 ...

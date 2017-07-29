@@ -11,7 +11,7 @@
 
 - name: "Vim AUR"
   become: yes
-  become_user: '{{ as_user }}'
+  become_user: '{{ aur_user }}'
   yaourt:
     name:  '{{ item.key }}'
     state: '{{ item.value }}'

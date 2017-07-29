@@ -4,5 +4,6 @@
 ---
 as_user: root
 python_version: "py3"
+aur_user: foo
 ...
 
