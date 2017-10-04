@@ -17,7 +17,7 @@
     state: '{{ item.value }}'
   tags: vim,editor
   with_dict: '{{ AURED }}'
-  when: "'Archlinux' in ansible_distribution"
+  when: "'Arch' in ansible_distribution"
 
 - name: "Install vim and deps "
   package:
