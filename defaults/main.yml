@@ -5,5 +5,6 @@
 as_user: root
 python_version: "py3"
 aur_user: foo
+pline_path: /usr/lib/python3.6
 ...
 

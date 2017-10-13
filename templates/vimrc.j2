@@ -42,6 +42,7 @@ let g:tex_flavor='latex'
 colo Tomorrow-Night
 syntax on
 
+{# set rtp+={{ pline_path }}/powerline/bindings/vim/ " fooling around #}
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -87,6 +88,11 @@ endfu
 
 com! WPE call WordProcessorModeEN
 
+{# fooling around
+set encoding=utf8
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+#}
+
 " Powerline
 let g:powerline_pycmd='{{ python_version }}'
 set t_Co=256 " User 256 colours (Use this setting only if your terminal supports 256 colours)
@@ -100,6 +106,7 @@ Plug 'glench/vim-jinja2-syntax'
 Plug 'rip-rip/clang_complete'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
+{# Plug 'ryanoasis/vim-devicons' #}
 call plug#end()
 
 " NERDTree conf
