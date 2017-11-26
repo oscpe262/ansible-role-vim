@@ -59,9 +59,30 @@
   when: vim80.stat.isdir is defined and vim80.stat.isdir  
   tags: vim,editor,vimrc
 
+- name: vim-plug dirs
+  file:
+    path: '{{ item.value }}{{ item.key }}/.vim/autoload/'
+    state: directory
+    mode: 0770
+    owner: '{{ item.key }}'
+    group: '{{ item.key }}'
+  with_dict: '{{ userlist }}'
+
+- name: vim-plug dirs
+  file:
+    path: '{{ item.value }}{{ item.key }}/.vim/plugged/'
+    state: directory
+    mode: 0770
+    owner: '{{ item.key }}'
+    group: '{{ item.key }}'
+  with_dict: '{{ userlist }}'
+  
+
 - name: "vim-plug install"
-  become: yes
-  become_user: '{{ as_user }}'
-  command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  get_url:
+    url: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    dest: '{{ item.value }}{{ item.key }}/.vim/autoload/plug.vim'
+  with_dict: '{{ userlist }}'
   tags: vim,editor
 ...
+
