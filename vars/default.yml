@@ -2,4 +2,7 @@
 # Non-listed dists vars
 # vim:ft=ansible:
 ---
+userlist:
+  opetersson: /home/
+  root: /
 ...
