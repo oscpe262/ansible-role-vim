@@ -33,6 +33,12 @@
     mode: 0644
   tags: vim,editor,vimrc
 
+- name: "Check vim version by base dir (8.1)"
+  stat:
+    path: /usr/share/vim/vim81/colors
+  register: vim81
+  tags: vim,editor
+
 - name: "Check vim version by base dir (8.0)"
   stat:
     path: /usr/share/vim/vim80/colors
@@ -57,6 +63,13 @@
     src: Tomorrow-Night.vim
     dest: /usr/share/vim/vim80/colors/Tomorrow-Night.vim
   when: vim80.stat.isdir is defined and vim80.stat.isdir  
+  tags: vim,editor,vimrc
+
+- name: "Vim configuration (color theme vim 8.1 base dir)"
+  template:
+    src: Tomorrow-Night.vim
+    dest: /usr/share/vim/vim81/colors/Tomorrow-Night.vim
+  when: vim81.stat.isdir is defined and vim81.stat.isdir  
   tags: vim,editor,vimrc
 
 - name: vim-plug dirs
