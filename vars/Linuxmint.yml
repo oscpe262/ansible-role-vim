@@ -1,6 +1,6 @@
 ## roles/vim/vars/Linuxmint.yml
 # Linux Mint specific vars
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 Editors:
   vim: present

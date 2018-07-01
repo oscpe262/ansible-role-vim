@@ -1,6 +1,6 @@
 ## roles/vim/vars/RedHat.yml
 # RHEL specific vars
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 Editors:
   vim: present

@@ -1,6 +1,6 @@
 ## roles/vim/vars/Archlinux.yml
 # Arch Linux specific vars
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 Editors:
   vi: absent

@@ -1,6 +1,6 @@
 ## roles/vim/tasks/Archlinux.yml
 ## Arch Linux specific tasks
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 - name: "Arch vim-plug install"
   become: yes

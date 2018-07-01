@@ -1,6 +1,6 @@
 ## roles/vim/vars/CentOS.yml
 # CentOS specific vars
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 Editors:
   vim-enhanced: present

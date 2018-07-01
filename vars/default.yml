@@ -1,6 +1,6 @@
 ## roles/vim/vars/default.yml
 # Non-listed dists vars
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 userlist:
   opetersson: /home/

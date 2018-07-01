@@ -1,6 +1,6 @@
 ## roles/vim/tasks/CentOS.yml
 ## CentOS specific tasks
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 - name: "vim-plug install"
   get_url:
