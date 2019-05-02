@@ -1,0 +1,7 @@
+## roles/vim/vars/Debian.yml
+# Debian specific vars
+# vim:ft=yaml.ansible:
+---
+Editors:
+  vim: present
+...
