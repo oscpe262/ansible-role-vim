@@ -1,0 +1,11 @@
+## roles/vim/vars/Fedora.yml
+# Fedora specific vars
+# vim:ft=yaml.ansible:
+---
+Editors:
+  vim: present
+  vim-syntastic: present
+  vim-powerline: present
+
+python_version: "py"
+...

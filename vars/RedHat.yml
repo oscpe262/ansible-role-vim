@@ -3,8 +3,9 @@
 # vim:ft=yaml.ansible:
 ---
 Editors:
-  vim: present
-  vim-syntastic: present
+  git: present
+  vim-enhanced: present
+  #  vim-syntastic: present
   #  vim-powerline: present
 
 python_version: "py"
